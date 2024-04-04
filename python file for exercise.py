@@ -1,2 +1,3 @@
-python file for exercise
+#python file for exercise
 jordans_edit = ["Hello"]
+Michaels_edit = ["hey"] 
