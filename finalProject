@@ -1,4 +1,14 @@
 
+def select_random_word(theme):
+    file_path = f'{theme}_words.txt'
+    with open(file_path, 'r') as file:
+        words = [line.strip() for line in file]
+    random_word = random.choice(words)
+
+    return random_word
+
+
+
 class Outcome:
     def __init__(self, letter_dict, word):
         self.score = 0
@@ -75,4 +85,3 @@ word = "hello"
 test = Outcome(test_dict, word)
 
 test.calculateScore()
-
