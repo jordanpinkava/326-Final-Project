@@ -1,4 +1,29 @@
+#jordan's code
+import random
 
+class Player:
+    def __init__(self, player_name):
+        self.name = name
+        self.guesses_made = []
+        self.incorrect_guesses = 5
+    def turn(self, player):
+        print(f"It is your turn, {self.player}!")
+        spin_wheel = random.randint(1, 7)
+        print(spin_wheel)
+        guess = input("Guess a Letter, or guess the word")
+        return guess
+        if guess == word:
+            self.guesses_made +=1
+            print("You win!")
+        elif guess in word:
+            self.guesses_made +=1
+            print(f"{self.guess} is in the word!")
+            #need to display how the guess shows up in the displayed word output
+        else:
+            self.incorrect_guesses -= 1
+            self.guesses_made +=1
+            print("Not in our word/phrase. Your turn is over.")
+#luis' code
 def select_random_word(theme):
     file_path = f'{theme}_words.txt'
     with open(file_path, 'r') as file:
@@ -7,8 +32,7 @@ def select_random_word(theme):
 
     return random_word
 
-
-
+#gabrielle's code
 class Outcome:
     def __init__(self, letter_dict, word):
         self.score = 0
