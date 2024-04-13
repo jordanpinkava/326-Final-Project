@@ -6,6 +6,32 @@ class Player:
         self.name = name
         self.guesses_made = []
         self.incorrect_guesses = 5
+#michael's code
+def guess_letter(theme, answer, letter, attempts_left):
+    """
+    Guess a letter in the word based on the given theme.
+    
+    Args:
+    - theme: The theme of the word (string)
+    - answer: The word the player is trying to guess (string).
+    - letter: The letter guessed by the player (string)
+    - attempts_left: The number of attempts the player has left (integer)
+    
+    Returns:
+    - A string indicating whether the letter is correct or not.
+    """
+    if attempts_left <= 0:
+        return "No attempts left. Try again later."
+    
+    if letter in answer:
+        return "Correct!"
+    else:
+        attempts_left -= 1
+        if attempts_left == 0:
+            return "Incorrect. No attempts left."
+        else:
+            return f"Incorrect. Try again, {attempts_left} attempts left."
+
     def turn(self, player):
         print(f"It is your turn, {self.player}!")
         spin_wheel = random.randint(1, 7)
