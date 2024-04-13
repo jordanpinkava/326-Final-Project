@@ -49,6 +49,18 @@ def guess_letter(theme, answer, letter, attempts_left):
             self.incorrect_guesses -= 1
             self.guesses_made +=1
             print("Not in our word/phrase. Your turn is over.")
+
+#Ben's code
+#basic representation of the board
+def game_state(self):
+    guesses = ''
+    while self.attempts_left > 0:
+        for letter in self.answer:
+            if letter in guesses:
+                print(letter, end=" ")
+            else:
+                print("_")
+
 #luis' code
 def select_random_word(theme):
     file_path = f'{theme}_words.txt'
