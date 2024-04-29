@@ -51,6 +51,7 @@ def guess_letter(theme, answer, letter, attempts_left):
             print("Not in our word/phrase. Your turn is over.")
 
 #Ben's code
+
 #basic representation of the board
 def game_state(self):
     guesses = ''
