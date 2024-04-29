@@ -52,6 +52,7 @@ def guess_letter(theme, answer, letter, attempts_left):
 
 #Ben's code
 #trying to add this line 
+#add another comment
 #basic representation of the board
 def game_state(self):
     guesses = ''
