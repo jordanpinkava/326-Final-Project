@@ -84,6 +84,7 @@ def select_random_word(theme):
 
 #gabrielle's code
 #test
+#note: we can prob do a repr at the end of this class for magic method points!
 class Outcome:
     def __init__(self, letter_dict, word):
         self.score = 0
