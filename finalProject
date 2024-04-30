@@ -65,6 +65,7 @@ def game_state(self):
                 print("_")
 
 #luis' code
+#new test
 def select_random_word(theme):
     file_path = f'{theme}_words.txt'
     with open(file_path, 'r') as file:
