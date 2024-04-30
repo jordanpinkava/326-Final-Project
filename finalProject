@@ -11,6 +11,7 @@ class Player:
         self.incorrect_guesses = 5
         self.points = 0
         
+    #jordans, still figuring this out
     def __add__(self, other):
         #basically decides how many points given on certain guesses
         return Player((self.points + other))
@@ -77,6 +78,7 @@ def game_state(self):
 
 #luis' code
 #new test
+#is this supposed to be main, or can it be? if so, we should rename it to main and put it towards the end
 def select_random_word(theme):
     file_path = f'{theme}_words.txt'
     with open(file_path, 'r') as file:
@@ -176,12 +178,10 @@ def parse_args(arglist):
        str: parsed arguments from those given
    """
    parser = ArgumentParser()
-   parser.add_argument("filepath", help = "Provide filepath")
-   parser.add_argument("name1", help = "Provide name 1")
-   parser.add_argument("name2", help = "Provide name 2")
+   parser.add_argument("theme", help = "Provide theme")
    return parser.parse_args(arglist)
 
 
 if __name__ == "__main__":
    args = parse_args(sys.argv[1:])
-   main(args.filepath, args.name1, args.name2)
+   main(args.theme)
