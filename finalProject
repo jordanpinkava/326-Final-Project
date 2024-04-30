@@ -73,6 +73,7 @@ def game_state(self):
                 print("_")
 
 #luis' code
+#new test
 def select_random_word(theme):
     file_path = f'{theme}_words.txt'
     with open(file_path, 'r') as file:
@@ -82,7 +83,7 @@ def select_random_word(theme):
     return random_word
 
 #gabrielle's code
-#note: we can prob do a repr at the end of this class for magic method points!
+#test
 class Outcome:
     def __init__(self, letter_dict, word):
         self.score = 0
