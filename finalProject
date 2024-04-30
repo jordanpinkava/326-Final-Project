@@ -150,3 +150,24 @@ word = "hello"
 test = Outcome(test_dict, word)
 
 test.calculateScore()
+
+#Jordan -- arg parse and if main
+def parse_args(arglist):
+   """parses the arguments and code given in our main() function
+
+   Args:
+       arglist (str): list of arguments to parse
+
+   Returns:
+       str: parsed arguments from those given
+   """
+   parser = ArgumentParser()
+   parser.add_argument("filepath", help = "Provide filepath")
+   parser.add_argument("name1", help = "Provide name 1")
+   parser.add_argument("name2", help = "Provide name 2")
+   return parser.parse_args(arglist)
+
+
+if __name__ == "__main__":
+   args = parse_args(sys.argv[1:])
+   main(args.filepath, args.name1, args.name2)
