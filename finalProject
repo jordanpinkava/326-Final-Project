@@ -74,6 +74,7 @@ def select_random_word(theme):
     return random_word
 
 #gabrielle's code
+#test
 class Outcome:
     def __init__(self, letter_dict, word):
         self.score = 0
