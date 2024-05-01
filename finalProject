@@ -79,6 +79,8 @@ def game_state(self):
 #luis' code
 #new test
 #is this supposed to be main, or can it be? if so, we should rename it to main and put it towards the end
+#self, then self.theme? and this maybe main.
+#ben will do a theme method 
 def select_random_word(theme):
     file_path = f'{theme}_words.txt'
     with open(file_path, 'r') as file:
