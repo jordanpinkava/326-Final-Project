@@ -8,8 +8,9 @@ class Player:
     def __init__(self, player_name):
         self.name = player_name
         self.guesses_made = []
-        self.incorrect_guesses = 5
+        self.incorrect_guesses = 3
         self.points = 0
+        self.word_guessed = False
         
     #jordans, still figuring this out
     def __add__(self, other):
@@ -21,6 +22,10 @@ class Player:
         guess = input("Guess a Letter, or guess the word")
         return guess
         self.guesses_made.append(guess)
+        #need to do some sort of conditional expression, but need to make it work
+        #i think i am having issues bc the turn and guesses code is so similar
+        self.word_guessed = True if guess == word else self.word_guessed = False
+        
     #michael's code
     def guess_letter(theme, answer, letter, attempts_left):
         """
