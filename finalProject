@@ -7,6 +7,7 @@ from time import sleep
 class Player:
     def __init__(self, player_name):
         self.name = player_name
+        #would this go in gamestate since it's a single player game?
         self.guesses_made = []
         self.incorrect_guesses = 3
         self.points = 0
@@ -69,14 +70,17 @@ class Player:
 #add another comment
 #adding a line to the code
 #basic representation of the board
-def game_state(self):
-    guesses = ''
-    while self.attempts_left > 0:
-        for letter in self.answer:
-            if letter in guesses:
-                print(letter, end=" ")
-            else:
-                print("_")
+class GameState:
+    def __init__(self):
+        pass
+    def game_state(self):
+        guesses = ''
+        while self.attempts_left > 0:
+            for letter in self.answer:
+                if letter in guesses:
+                    print(letter, end=" ")
+                else:
+                    print("_")
 
 #luis' code
 #new test
