@@ -27,7 +27,47 @@ class Player:
         #i think i am having issues bc the turn and guesses code is so similar
         self.word_guessed = True if guess == word else self.word_guessed = False
         
-    #michael's code
+    #michael's code, im still working on these, my bad if they overlap w/ ur code
+    def guess(word, jumble):
+
+    # convert both words to lowercase to ignore case sensitivity
+        word = word.lower()
+        jumble = jumble.lower()
+    
+    #create dictionaries to count the occurrences of each letter in both words
+        word_count = {}
+        jumble_count = {}
+    
+    #ount the occurrences of each letter in the word
+        for letter in word:
+            word_count[letter] = word_count.get(letter, 0) + 1
+    
+    #count the occurrences of each letter in the jumble
+        for letter in jumble:
+            jumble_count[letter] = jumble_count.get(letter, 0) + 1
+    
+    #check if the jumble contains all the letters required to form the word
+        for letter, count in word_count.items():
+            if letter not in jumble_count or jumble_count[letter] < count:
+                return False
+
+
+    #get the player's guess
+        player_guess = input("Enter your guess: ")
+
+
+#check if the player's guess is correct
+        attempts_left =3 
+        if guess(word, player_guess):
+            print("Yes, your guess is correct!")
+        else:
+            print("No, your guess is incorrect.")
+            attempts_left -=1
+        if attempts_left == 0:    
+            return "No attempts left. Try again later."
+
+
+
     def guess_letter(theme, answer, letter, attempts_left):
         """
         Guess a letter in the word based on the given theme.
