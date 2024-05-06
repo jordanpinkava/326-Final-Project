@@ -13,11 +13,6 @@ class Player:
         self.points = 0
         self.word_guessed = False
         
-    #jordans, still figuring this out
-    def __add__(self, other):
-        #basically decides how many points given on certain guesses
-        return Player((self.points + other))
-        
     def turn(self, player):
         print(f"It is your turn, {self.player}!")
         guess = input("Guess a Letter, or guess the word")
@@ -25,7 +20,7 @@ class Player:
         self.guesses_made.append(guess)
         #need to do some sort of conditional expression, but need to make it work
         #i think i am having issues bc the turn and guesses code is so similar
-        self.word_guessed = True if guess == word else self.word_guessed = False
+        #self.word_guessed = True if guess == word else self.word_guessed = False
         
     #michael's code, im still working on these, my bad if they overlap w/ ur code
     def guess(word, jumble):
@@ -125,6 +120,10 @@ class GameState:
     
     #jordan will write a function to see if player wants to play again
     #will use conditional expression
+    def play_again(self):
+        play_again = input("Do you want to play the game again? Y/N: ")
+        return True if play_again.upper() == "Y" else False
+    #then I think in main it will have to call this function at teh end to see if the program needs to be ran again
         
 
 #luis' code
