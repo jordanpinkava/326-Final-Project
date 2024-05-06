@@ -106,21 +106,21 @@ class Player:
         #     print("Not in our word/phrase. Your turn is over.")
 
 #Ben's code
-#trying to add this line 
-#add another comment
-#adding a line to the code
-#basic representation of the board
 class GameState:
-    def __init__(self):
-        pass
+    def __init__(self, theme):
+        self.theme = None
     def game_state(self):
-        guesses = ''
-        while self.attempts_left > 0:
-            for letter in self.answer:
-                if letter in guesses:
-                    print(letter, end=" ")
-                else:
-                    print("_")
+        pass
+    
+    def get_theme(self, theme_choice):
+        print("Possible themes: Fruit or Animals")
+        theme_choice = input("Choose your theme")
+        #raise value error if user doesn't input 'fruit' or 'animals'
+        if theme_choice not in ["fruit", "animals"]:
+            raise ValueError("Invalid theme.")
+        #sets theme to input
+        self.theme = theme_choice
+        
 
 #luis' code
 #new test
