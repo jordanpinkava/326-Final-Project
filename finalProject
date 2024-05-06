@@ -3,6 +3,7 @@ import random
 from argparse import ArgumentParser
 import sys
 from time import sleep
+import re
 
 class Player:
     def __init__(self, player_name):
@@ -50,7 +51,8 @@ class Player:
     #get the player's guess
         player_guess = input("Enter your guess: ")
 
-
+# Doing this already in outcome.gameplay. Can this function just return 
+# a scrambled word?
 #check if the player's guess is correct
         attempts_left =3 
         if guess(word, player_guess):
@@ -145,7 +147,7 @@ def select_random_word(theme):
 class Outcome:
     def __init__(self, word):
         self.score = 0
-        self.word = word
+        self.word = word.lower()
         self.letter_dict = {
     'a': 3,
     'b': 2,
@@ -258,4 +260,8 @@ def parse_args(arglist):
 
 if __name__ == "__main__":
    args = parse_args(sys.argv[1:])
-   main(args.theme)
+   word = select_random_word(args.theme)
+   name = input("Please enter your name: ")
+   player1 = Player(name)
+   running = Outcome(word)
+   running.gameplay(word, player1.incorrect_guesses)
