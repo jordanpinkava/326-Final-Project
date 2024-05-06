@@ -67,7 +67,7 @@ class Player:
             return "No attempts left. Try again later."
 
 
-
+    #will delete
     def guess_letter(theme, answer, letter, attempts_left):
         """
         Guess a letter in the word based on the given theme.
@@ -120,6 +120,11 @@ class GameState:
             raise ValueError("Invalid theme.")
         #sets theme to input
         self.theme = theme_choice
+        
+    #ben's magic method
+    
+    #jordan will write a function to see if player wants to play again
+    #will use conditional expression
         
 
 #luis' code
