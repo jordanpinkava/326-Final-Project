@@ -25,6 +25,7 @@ class Player:
         
     #michael's code, im still working on these, my bad if they overlap w/ ur code
     def guess(word, jumble):
+        #i think you might only need word param
 
     # convert both words to lowercase to ignore case sensitivity
         word = word.lower()
@@ -199,20 +200,19 @@ class Outcome:
             print("Invalid Input Format. Please use only letters!")
             return False
 
-    def results(self, guesses, answered):
+    def results(self, guesses, answered, name="User"):
         if answered == 1:
-            print("Congrats! You got it correct!")
-            print("You recieved a score of " + str(self.score) + " with " + str(guesses) + " guesses remaining.")
+            print("Congrats!" + str(name) + " got it correct!")
+            print(str(name) + " recieved a score of " + str(self.score) + " with " + str(guesses) + " guesses remaining.")
         else:
-            print("You have run out of guesses and did not get the right answer!")
-            print("Sorry! Please play again soon!")
+            print(str(name) + " have run out of guesses and did not get the right answer!")
+            print("Sorry " + str(name) + ", Please play again soon!")
                 
-
-    def gameplay(self, word, guesses):
+#add parameter jumble word to gameplay
+    def gameplay(self, word, guesses,name = "User"):
         self.__str__()
 
         # USE SCRAMBLE FUNCTION
-
         # PRINT SCAMBLED WORD
         # print("Here are your letters:" + str(scrambled_word))
 
@@ -241,7 +241,7 @@ class Outcome:
                         flag = True
                     else:
                         user_inp = input("What is your next guess? \n")
-        self.results(guesses, answered)
+        self.results(guesses, answered, name)
         return guesses
 
 #Jordan -- arg parse and if main
@@ -265,4 +265,5 @@ if __name__ == "__main__":
    name = input("Please enter your name: ")
    player1 = Player(name)
    running = Outcome(word)
-   running.gameplay(word, player1.incorrect_guesses)
+   #add player.scramble or whatever scramble function is called in player
+   running.gameplay(word, player1.incorrect_guesses, name)
