@@ -123,6 +123,7 @@ class GameState:
     def play_again(self):
         play_again = input("Do you want to play the game again? Y/N: ")
         return True if play_again.upper() == "Y" else False
+    #call main() if true and sys.exit() if false
     #then I think in main it will have to call this function at teh end to see if the program needs to be ran again
         
 
