@@ -25,6 +25,7 @@ class Player:
         
     #michael's code, im still working on these, my bad if they overlap w/ ur code
     def guess(word, jumble):
+        #i think you might only need word param
 
     # convert both words to lowercase to ignore case sensitivity
         word = word.lower()
@@ -128,6 +129,20 @@ class GameState:
         # main() if play_again.upper() == "Y" else sys.exit()
     #call main() if true and sys.exit() if false
     #then I think in main it will have to call this function at teh end to see if the program needs to be ran again
+
+
+
+    def letters():
+        letters1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+        random_letters = (random.choice(letters1), 3) 
+        random_word += random_letters
+
+    
+    def scramble(random_word):
+        shuffled_word = random.shuffle(random_word)
+
+        return shuffled_word
+
         
 
 #luis' code
@@ -142,7 +157,6 @@ def select_random_word(theme):
     random_word = random.choice(words)
 
     return random_word
-
 #gabrielle's code
 #test
 #note: we can prob do a repr at the end of this class for magic method points!
@@ -200,21 +214,19 @@ class Outcome:
             print("Invalid Input Format. Please use only letters!")
             return False
 
-    def results(self, guesses, answered):
+    def results(self, guesses, answered, name="User"):
         if answered == 1:
-            print("Congrats! You got it correct!")
-            print("You recieved a score of " + str(self.score) + " with " + str(guesses) + " guesses remaining.")
+            print("Congrats!" + str(name) + " got it correct!")
+            print(str(name) + " recieved a score of " + str(self.score) + " with " + str(guesses) + " guesses remaining.")
         else:
-            #I feel like this should tell the user the right answer
             print("You have run out of guesses and did not get the right answer!")
             print("Sorry! Please play again soon!")
                 
-
-    def gameplay(self, word, guesses):
+#add parameter jumble word to gameplay
+    def gameplay(self, word, guesses,name = "User"):
         self.__str__()
 
         # USE SCRAMBLE FUNCTION
-
         # PRINT SCAMBLED WORD
         # print("Here are your letters:" + str(scrambled_word))
 
@@ -243,7 +255,7 @@ class Outcome:
                         flag = True
                     else:
                         user_inp = input("What is your next guess? \n")
-        self.results(guesses, answered)
+        self.results(guesses, answered, name)
         return guesses
 
 #Jordan -- arg parse and if main
@@ -266,5 +278,7 @@ if __name__ == "__main__":
    word = select_random_word(args.theme)
    name = input("Please enter your name: ")
    player1 = Player(name)
+   bar = GameState(theme)
    running = Outcome(word)
-   running.gameplay(word, player1.incorrect_guesses)
+   #add player.scramble or whatever scramble function is called in player
+   running.gameplay(word, player1.incorrect_guesses, name)
