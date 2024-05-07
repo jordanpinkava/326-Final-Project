@@ -192,8 +192,9 @@ class Outcome:
             return False
 
     def results(self, guesses, answered, name="User"):
+
         if answered == 1:
-            print("Congrats!" + str(name) + " got it correct!")
+            print("Congrats! " + str(name) + " got it correct!")
             print(str(name) + " recieved a score of " + str(self.score) + " with " + str(guesses) + " guesses remaining.")
         else:
             print(str(name) + " have run out of guesses and did not get the right answer!")
@@ -213,7 +214,7 @@ class Outcome:
                 flag = True
             else:
                 user_inp = input("What is your guess? \n")
-        answered = 1
+        answered = 0
         while guesses > 1 and answered == 0:
             if str(user_inp) == word:
                 answered += 1
@@ -260,7 +261,7 @@ if __name__ == "__main__":
         scrambled_word = game_state.scramble(random_word)
         running = Outcome(random_word)
         #add player.scramble or whatever scramble function is called in player
-        running.gameplay(scrambled_word, player1.incorrect_guesses, name)
+        running.gameplay(random_word, player1.incorrect_guesses, name)
         # game_state.select_random_word()
         play = game_state.play_again()
         if play == True:
