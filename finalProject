@@ -64,6 +64,8 @@ class GameState:
     def __str__(self):
         return f"Possible Themes: {', '.join(self.possible_themes)}"
     
+    
+    #Ben is still working this out 
     #def get_theme(self):
         #raise value error if user doesn't input 'fruit' or 'animals'
         if theme_choice not in ["fruit", "animals", "sports", "countries"]:
