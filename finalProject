@@ -132,6 +132,15 @@ class GameState:
 
 
 
+class GetWord(GameState):
+    def select_random_word(theme):
+        file_path = f'{theme}_words.txt'
+        with open(file_path, 'r') as file:
+            words = [line.strip() for line in file]
+        random_word = random.choice(words)
+
+        return random_word
+
     def letters():
         letters1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
         random_letters = (random.choice(letters1), 3) 
@@ -139,8 +148,11 @@ class GameState:
 
     
     def scramble(random_word):
-        shuffled_word = random.shuffle(random_word)
-        return shuffled_word
+        shuffled_word = list(random_word)
+        random.shuffle(shuffled_word)
+
+        print(shuffled_word)
+    
 
         
 
@@ -149,13 +161,7 @@ class GameState:
 #is this supposed to be main, or can it be? if so, we should rename it to main and put it towards the end
 #self, then self.theme? and this maybe main.
 #ben will do a theme method 
-def select_random_word(theme):
-    file_path = f'{theme}_words.txt'
-    with open(file_path, 'r') as file:
-        words = [line.strip() for line in file]
-    random_word = random.choice(words)
 
-    return random_word
 #gabrielle's code
 #test
 #note: we can prob do a repr at the end of this class for magic method points!
@@ -274,10 +280,11 @@ def parse_args(arglist):
 
 if __name__ == "__main__":
    args = parse_args(sys.argv[1:])
-   word = select_random_word(args.theme)
+   word = GetWord.select_random_word(args.theme)
    name = input("Please enter your name: ")
    player1 = Player(name)
-   bar = GameState(theme)
+   random_word = GetWord.select_random_word("theme")
+   scrambled_word = GetWord.scramble(random_word)
    running = Outcome(word)
    #add player.scramble or whatever scramble function is called in player
    running.gameplay(word, player1.incorrect_guesses, name)
