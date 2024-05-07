@@ -285,12 +285,12 @@ def parse_args(arglist):
 
 if __name__ == "__main__":
    args = parse_args(sys.argv[1:])
-   #word = GetWord.select_random_word(args.theme)
+   word = select_random_word(args.theme)
    name = input("Please enter your name: ")
    player1 = Player(name)
    random_word = select_random_word(args.theme)
    scrambled_word = scramble(random_word)
-   running = Outcome(scrambled_word)
+   running = Outcome(word)
    #add player.scramble or whatever scramble function is called in player
    running.gameplay(scrambled_word, player1.incorrect_guesses, name)
    play = True
