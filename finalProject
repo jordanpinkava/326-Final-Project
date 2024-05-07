@@ -2,7 +2,6 @@
 import random
 from argparse import ArgumentParser
 import sys
-from time import sleep
 import re
 
 class Player:
@@ -19,9 +18,6 @@ class Player:
         guess = input("Guess a Letter, or guess the word")
         return guess
         self.guesses_made.append(guess)
-        #need to do some sort of conditional expression, but need to make it work
-        #i think i am having issues bc the turn and guesses code is so similar
-        #self.word_guessed = True if guess == word else self.word_guessed = False
         
     #michael's code, im still working on these, my bad if they overlap w/ ur code
     def guess(word, jumble):
