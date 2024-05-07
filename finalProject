@@ -59,16 +59,16 @@ class Player:
 class GameState:
     def __init__(self, theme=None):
         self.theme = theme
-    def game_state(self):
-        pass
+        
+    def __str__(self):
+        return f"Themes: 'sports', 'fruit', 'animals', countries'"
     
-    def get_theme(self, theme_choice):
-        print("Possible themes: fruit, animals, sports, countries")
+    def get_theme(self):
         #raise value error if user doesn't input 'fruit' or 'animals'
         if theme_choice not in ["fruit", "animals", "sports", "countries"]:
             raise ValueError("Invalid theme.")
         #sets theme to input
-        theme_choice = input("Choose your theme")
+        theme_choice = input("Choose your theme:")
         self.theme = theme_choice
         return self.theme
         
@@ -215,16 +215,17 @@ def parse_args(arglist):
        str: parsed arguments from those given
    """
    parser = ArgumentParser()
-   parser.add_argument("theme", help = "Provide theme")
    return parser.parse_args(arglist)
 
 
 if __name__ == "__main__":
    args = parse_args(sys.argv[1:])
-   game_state = GameState(args.theme)
    #word = game_state.select_random_word()
    name = input("Please enter your name: ")
    player1 = Player(name)
+   print(GameState())
+   theme = input("Please choose a theme: ")
+   game_state = GameState(theme)
    play = True
    while play:
         random_word = game_state.select_random_word()
@@ -232,12 +233,11 @@ if __name__ == "__main__":
         running = Outcome(random_word)
         #add player.scramble or whatever scramble function is called in player
         running.gameplay(random_word, player1.incorrect_guesses, name)
-        # game_state.select_random_word()
+        
         play = game_state.play_again()
         if play == True:
-            theme_select = input("What theme would you like?")
-            game_state.theme = theme_select
-        #theme_select = input("What theme would you like?")
+            theme = input("Please choose a theme: ")
+            game_state = GameState(theme)
    else:
        sys.exit() 
        
