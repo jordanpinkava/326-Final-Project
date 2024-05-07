@@ -171,7 +171,7 @@ class Outcome:
             
                 
 
-    def gameplay(self, word, guesses,name = "User"):
+    def gameplay(self, word, guesses, name = "User"):
         self.__str__()
 
         user_inp = input("What is your guess? \n")
@@ -199,8 +199,14 @@ class Outcome:
                         flag = True
                     else:
                         user_inp = input("What is your next guess? \n")
+        if str(user_inp.lower()) == word.lower() and guesses == 1:
+            answered += 1
         self.results(guesses, answered, name)
+
         return guesses
+    
+    def get_total(self):
+        return self.score
 
 #Jordan -- arg parse and if main
 def parse_args(arglist):
@@ -225,14 +231,18 @@ if __name__ == "__main__":
    theme = input("Please choose a theme: ")
    game_state = GameState(theme)
    play = True
+   totalScore = 0
    while play:
+        
         random_word = game_state.select_random_word()
         scrambled_word = game_state.scramble(random_word)
         running = Outcome(random_word)
         #add player.scramble or whatever scramble function is called in player
         running.gameplay(random_word, player1.incorrect_guesses, name)
+        totalScore += running.get_total()
         
         play = game_state.play_again()
+        print("the amount of points you have scored so far is " + str(totalScore))
         if play == True:
             theme = input("Please choose a theme: ")
             game_state = GameState(theme)
