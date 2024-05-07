@@ -125,6 +125,7 @@ class GameState:
     def play_again(self):
         play_again = input("Do you want to play the game again? Y/N: ")
         return True if play_again.upper() == "Y" else False
+        # main() if play_again.upper() == "Y" else sys.exit()
     #call main() if true and sys.exit() if false
     #then I think in main it will have to call this function at teh end to see if the program needs to be ran again
         
@@ -204,6 +205,7 @@ class Outcome:
             print("Congrats! You got it correct!")
             print("You recieved a score of " + str(self.score) + " with " + str(guesses) + " guesses remaining.")
         else:
+            #I feel like this should tell the user the right answer
             print("You have run out of guesses and did not get the right answer!")
             print("Sorry! Please play again soon!")
                 
@@ -216,7 +218,7 @@ class Outcome:
         # PRINT SCAMBLED WORD
         # print("Here are your letters:" + str(scrambled_word))
 
-        user_inp = input("What is your guess? \n")
+        user_inp = input(f"What is your guess? \n")
         flag = False
         while not flag:
             sucess = self.wordVerification(user_inp)
