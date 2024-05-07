@@ -125,8 +125,10 @@ class GameState:
     
     #jordan will write a function to see if player wants to play again
     #will use conditional expression
-    def play_again():
+    def play_again(self):
         play_again = input("Do you want to play the game again? Y/N: ")
+        # theme_select = input("What theme would you like?")
+        # self.theme = theme_select
         return True if play_again.upper() == "Y" else False
     #call main() if true and sys.exit() if false
     #then I think in main it will have to call this function at teh end to see if the program needs to be ran again
@@ -137,21 +139,21 @@ class GameState:
 #is this supposed to be main, or can it be? if so, we should rename it to main and put it towards the end
 #self, then self.theme? and this maybe main.
 #ben will do a theme method 
-    def select_random_word(theme):
-        file_path = f'{theme}_words.txt'
+    def select_random_word(self):
+        file_path = f'{self.theme}_words.txt'
         with open(file_path, 'r') as file:
             words = [line.strip() for line in file]
         random_word = random.choice(words)
 
         return random_word
 
-    def letters():
+    def letters(self):
         letters1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
         random_letters = (random.choice(letters1), 3) 
         random_word += random_letters
 
         
-    def scramble(random_word):
+    def scramble(self, random_word):
         shuffled_word = list(random_word)
         random.shuffle(shuffled_word)
 
@@ -288,20 +290,22 @@ def parse_args(arglist):
 if __name__ == "__main__":
    args = parse_args(sys.argv[1:])
    game_state = GameState(args.theme)
-   word = GameState.select_random_word(args.theme)
+   #word = game_state.select_random_word()
    name = input("Please enter your name: ")
    player1 = Player(name)
-   random_word = GameState.select_random_word(args.theme)
-   scrambled_word = GameState.scramble(random_word)
-   running = Outcome(word)
-   
-   #add player.scramble or whatever scramble function is called in player
-   running.gameplay(scrambled_word, player1.incorrect_guesses, name)
-   play = GameState.play_again()
+   play = True
    while play:
-       theme_select = input("What theme would you like?")
-       GameState.select_random_word(theme_select)
-       play = GameState.play_again()
+        random_word = game_state.select_random_word()
+        scrambled_word = game_state.scramble(random_word)
+        running = Outcome(random_word)
+        #add player.scramble or whatever scramble function is called in player
+        running.gameplay(scrambled_word, player1.incorrect_guesses, name)
+        # game_state.select_random_word()
+        play = game_state.play_again()
+        if play == True:
+            theme_select = input("What theme would you like?")
+            game_state.theme = theme_select
+        #theme_select = input("What theme would you like?")
    else:
        sys.exit() 
        
