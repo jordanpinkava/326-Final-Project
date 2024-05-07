@@ -86,18 +86,6 @@ class Player:
                 return "Incorrect. No attempts left."
             else:
                 return f"Incorrect. Try again, {attempts_left} attempts left."
-    ## stuff below is similar to michaels code above, will combine
-        # if guess == word:
-        #     self.guesses_made +=1
-        #     print("You win!")
-        # elif guess in word:
-        #     self.guesses_made +=1
-        #     print(f"{self.guess} is in the word!")
-        #     #need to display how the guess shows up in the displayed word output
-        # else:
-        #     self.incorrect_guesses -= 1
-        #     self.guesses_made +=1
-        #     print("Not in our word/phrase. Your turn is over.")
 
 #Ben's code
 class GameState:
@@ -123,18 +111,10 @@ class GameState:
     #will use conditional expression
     def play_again(self):
         play_again = input("Do you want to play the game again? Y/N: ")
-        # theme_select = input("What theme would you like?")
-        # self.theme = theme_select
         return True if play_again.upper() == "Y" else False
-    #call main() if true and sys.exit() if false
-    #then I think in main it will have to call this function at teh end to see if the program needs to be ran again
         
 
 #luis' code
-#new test
-#is this supposed to be main, or can it be? if so, we should rename it to main and put it towards the end
-#self, then self.theme? and this maybe main.
-#ben will do a theme method 
     def select_random_word(self):
         file_path = f'{self.theme}_words.txt'
         with open(file_path, 'r') as file:
@@ -143,10 +123,10 @@ class GameState:
 
         return random_word
 
-    def letters(self):
-        letters1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-        random_letters = (random.choice(letters1), 3) 
-        random_word += random_letters
+    # def letters(self):
+    #     letters1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    #     random_letters = (random.choice(letters1), 3) 
+    #     random_word += random_letters
 
         
     def scramble(self, random_word):
@@ -155,18 +135,7 @@ class GameState:
 
         print(shuffled_word)
     
-
-        
-
-#luis' code
-#new test
-#is this supposed to be main, or can it be? if so, we should rename it to main and put it towards the end
-#self, then self.theme? and this maybe main.
-#ben will do a theme method 
-
 #gabrielle's code
-#test
-#note: we can prob do a repr at the end of this class for magic method points!
 
 class Outcome:
     def __init__(self, word):
