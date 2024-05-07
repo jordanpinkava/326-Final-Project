@@ -132,14 +132,25 @@ class GameState:
 
 
 
+class GetWord(GameState):
+    def select_random_word(theme):
+        file_path = f'{theme}_words.txt'
+        with open(file_path, 'r') as file:
+            words = [line.strip() for line in file]
+        random_word = random.choice(words)
+
+        return random_word
+
     def letters():
         letters1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
         random_letters = (random.choice(letters1), 3) 
         random_word += random_letters
 
     
-    def scramble(random_word):
+    def scramble(self, random_word):
         shuffled_word = random.shuffle(random_word)
+
+        print(shuffled_word)
         return shuffled_word
 
         
@@ -149,13 +160,7 @@ class GameState:
 #is this supposed to be main, or can it be? if so, we should rename it to main and put it towards the end
 #self, then self.theme? and this maybe main.
 #ben will do a theme method 
-def select_random_word(theme):
-    file_path = f'{theme}_words.txt'
-    with open(file_path, 'r') as file:
-        words = [line.strip() for line in file]
-    random_word = random.choice(words)
 
-    return random_word
 #gabrielle's code
 #test
 #note: we can prob do a repr at the end of this class for magic method points!
@@ -218,14 +223,9 @@ class Outcome:
             print("Congrats!" + str(name) + " got it correct!")
             print(str(name) + " recieved a score of " + str(self.score) + " with " + str(guesses) + " guesses remaining.")
         else:
-<<<<<<< HEAD
             #I feel like this should tell the user the right answer
             print("You have run out of guesses and did not get the right answer!")
             print("Sorry! Please play again soon!")
-=======
-            print(str(name) + " have run out of guesses and did not get the right answer!")
-            print("Sorry " + str(name) + ", Please play again soon!")
->>>>>>> 49571635efc085c10d50035106e1cc766e2ad1f2
                 
 #add parameter jumble word to gameplay
     def gameplay(self, word, guesses,name = "User"):
@@ -280,10 +280,10 @@ def parse_args(arglist):
 
 if __name__ == "__main__":
    args = parse_args(sys.argv[1:])
-   word = select_random_word(args.theme)
+   word = GetWord.select_random_word(args.theme)
    name = input("Please enter your name: ")
    player1 = Player(name)
-   bar = GameState(theme)
+   scrambled_word = GetWord.scramble(random_word)
    running = Outcome(word)
    #add player.scramble or whatever scramble function is called in player
    running.gameplay(word, player1.incorrect_guesses, name)
