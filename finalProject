@@ -283,7 +283,7 @@ if __name__ == "__main__":
    word = GetWord.select_random_word(args.theme)
    name = input("Please enter your name: ")
    player1 = Player(name)
-   random_word = GetWord.select_random_word("theme")
+   random_word = GetWord.select_random_word(args.theme)
    scrambled_word = GetWord.scramble(random_word)
    running = Outcome(word)
    #add player.scramble or whatever scramble function is called in player
