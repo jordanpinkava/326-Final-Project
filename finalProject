@@ -128,6 +128,20 @@ class GameState:
         return True if play_again.upper() == "Y" else False
     #call main() if true and sys.exit() if false
     #then I think in main it will have to call this function at teh end to see if the program needs to be ran again
+
+
+
+    def letters():
+        letters1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+        random_letters = (random.choice(letters1), 3) 
+        random_word += random_letters
+
+    
+    def scramble(random_word):
+        shuffled_word = random.shuffle(random_word)
+
+        return shuffled_word
+
         
 
 #luis' code
@@ -142,7 +156,6 @@ def select_random_word(theme):
     random_word = random.choice(words)
 
     return random_word
-
 #gabrielle's code
 #test
 #note: we can prob do a repr at the end of this class for magic method points!
@@ -264,6 +277,7 @@ if __name__ == "__main__":
    word = select_random_word(args.theme)
    name = input("Please enter your name: ")
    player1 = Player(name)
+   bar = GameState(theme)
    running = Outcome(word)
    #add player.scramble or whatever scramble function is called in player
    running.gameplay(word, player1.incorrect_guesses, name)
