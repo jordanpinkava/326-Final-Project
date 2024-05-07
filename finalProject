@@ -216,7 +216,7 @@ class Outcome:
                 user_inp = input("What is your guess? \n")
         answered = 0
         while guesses > 1 and answered == 0:
-            if str(user_inp) == word.lower():
+            if str(user_inp.lower()) == word.lower():
                 answered += 1
                 break
             else:
