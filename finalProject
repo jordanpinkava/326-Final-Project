@@ -91,17 +91,20 @@ class GameState:
 
         return random_word
 
-    # def letters(self):
-    #     letters1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-    #     random_letters = (random.choice(letters1), 3) 
-    #     random_word += random_letters
+    def letters(self):
+        letters1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+        random_letters = random.sample(letters1, 3) 
+        return random_letters
 
         
     def scramble(self, random_word):
-        shuffled_word = list(random_word)
+        random_letters = self.letters()
+        combined_word = random_word + ''.join(random_letters)
+        shuffled_word = list(combined_word)
         random.shuffle(shuffled_word)
 
         print(shuffled_word)
+        return ''.join(shuffled_word)
     
 #gabrielle's code
 
