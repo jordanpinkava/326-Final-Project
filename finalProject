@@ -105,7 +105,7 @@ class Player:
 
 #Ben's code
 class GameState:
-    def __init__(self, theme):
+    def __init__(self, theme, random_word):
         self.theme = None
     def game_state(self):
         pass
@@ -131,17 +131,19 @@ class GameState:
 
 
 
-    def letters():
+    def letters(self):
         letters1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
         random_letters = (random.choice(letters1), 3) 
         random_word += random_letters
 
     
-    def scramble(random_word):
+    def scramble(self, random_word):
         shuffled_word = random.shuffle(random_word)
 
+        print(shuffled_word)
         return shuffled_word
-
+    
+        
         
 
 #luis' code
@@ -277,7 +279,8 @@ if __name__ == "__main__":
    word = select_random_word(args.theme)
    name = input("Please enter your name: ")
    player1 = Player(name)
-   bar = GameState(theme)
+   bar = GameState(args.theme)
    running = Outcome(word)
    #add player.scramble or whatever scramble function is called in player
+   GameState.scramble(random_word)
    running.gameplay(word, player1.incorrect_guesses, name)
