@@ -7,7 +7,6 @@ import re
 class Player:
     def __init__(self, player_name):
         self.name = player_name
-        #would this go in gamestate since it's a single player game?
         self.guesses_made = []
         self.incorrect_guesses = 3
         self.points = 0
@@ -59,11 +58,15 @@ class Player:
 class GameState:
     def __init__(self, theme=None):
         self.theme = theme
+        self.possible_themes = ['sports', 'fruit', 'animals', 'countries']   
         
+    #Ben: magic method; prints possible themes  
     def __str__(self):
-        return f"Themes: 'sports', 'fruit', 'animals', countries'"
+        return f"Possible Themes: {', '.join(self.possible_themes)}"
     
-    def get_theme(self):
+    
+    #Ben is still working this out 
+    #def get_theme(self):
         #raise value error if user doesn't input 'fruit' or 'animals'
         if theme_choice not in ["fruit", "animals", "sports", "countries"]:
             raise ValueError("Invalid theme.")
@@ -72,11 +75,8 @@ class GameState:
         self.theme = theme_choice
         return self.theme
         
-        
-    #ben's magic method
     
-    #jordan will write a function to see if player wants to play again
-    #will use conditional expression
+    #jordan function to play again
     def play_again(self):
         play_again = input("Do you want to play the game again? Y/N: ")
         return True if play_again.upper() == "Y" else False
