@@ -135,25 +135,25 @@ class GameState:
 #is this supposed to be main, or can it be? if so, we should rename it to main and put it towards the end
 #self, then self.theme? and this maybe main.
 #ben will do a theme method 
-def select_random_word(theme):
-    file_path = f'{theme}_words.txt'
-    with open(file_path, 'r') as file:
-        words = [line.strip() for line in file]
-    random_word = random.choice(words)
+    def select_random_word(self):
+        file_path = f'{self.theme}_words.txt'
+        with open(file_path, 'r') as file:
+            words = [line.strip() for line in file]
+        random_word = random.choice(words)
 
-    return random_word
+        return random_word
 
-def letters():
-    letters1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-    random_letters = (random.choice(letters1), 3) 
-    random_word += random_letters
+    def letters():
+        letters1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+        random_letters = (random.choice(letters1), 3) 
+        random_word += random_letters
 
-    
-def scramble(random_word):
-    shuffled_word = list(random_word)
-    random.shuffle(shuffled_word)
+        
+    def scramble(random_word):
+        shuffled_word = list(random_word)
+        random.shuffle(shuffled_word)
 
-    print(shuffled_word)
+        print(shuffled_word)
     
 
         
@@ -291,11 +291,13 @@ if __name__ == "__main__":
    random_word = select_random_word(args.theme)
    scrambled_word = scramble(random_word)
    running = Outcome(word)
+   
    #add player.scramble or whatever scramble function is called in player
    running.gameplay(scrambled_word, player1.incorrect_guesses, name)
-   play = True
+   play = GameState.play_again()
    while play:
-       select_random_word()
+       theme_select = input("What theme would you like?")
+       select_random_word(theme_select)
        play = GameState.play_again()
    else:
        sys.exit() 
