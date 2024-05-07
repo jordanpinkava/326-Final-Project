@@ -66,7 +66,7 @@ class GameState:
     
     
     #Ben is still working this out 
-    #def get_theme(self):
+    def get_theme(self):
         #raise value error if user doesn't input 'fruit' or 'animals'
         if theme_choice not in ["fruit", "animals", "sports", "countries"]:
             raise ValueError("Invalid theme.")
@@ -92,7 +92,8 @@ class GameState:
         return random_word
 
     def letters(self):
-        letters1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+        letters1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 
+        'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
         random_letters = random.sample(letters1, 3) 
         return random_letters
 
