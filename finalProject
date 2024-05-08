@@ -215,17 +215,17 @@ class Outcome:
                 answered += 1
                 break
             else:
-                print("Incorrect guess. Try again!")
+                print("So sorry " + str(name) +" Incorrect guess. Try again!")
                 guesses -= 1
                 print("You have " + str(guesses) + " remaining.")
-                user_inp = input("What is your next guess? \n")
+                user_inp = input(str(name) +", What is your next guess? \n")
                 flag = False
                 while not flag:
                     sucess = self.wordVerification(user_inp)
                     if sucess:
                         flag = True
                     else:
-                        user_inp = input("What is your next guess? \n")
+                        user_inp = input(str(name) + ", What is your next guess? \n")
         if str(user_inp.lower()) == word.lower() and guesses == 1:
             answered += 1
         self.results(guesses, answered, name)
