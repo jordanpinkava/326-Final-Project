@@ -126,7 +126,31 @@ class GameState:
 #gabrielle's code
 
 class Outcome:
+    """
+    This class works to determine the outcome of the game
+
+
+    Attributes:
+        score (int): The current score of each round
+        word (str): the word being evaluated for each round
+        letter_dict (dict): a dictionary to map the letters of word to evaluate it to a corresponding score
+
+    Methods:
+        __init__ (self, word):
+
+        __str__(self):
+
+        calculatePotentialScore(self):
+
+        wordVerification(self, word):
+
+        results(self, guesses, answered, name = "User"):
+
+        gameplay(self, word, guesses, name="User):
+    """
     def __init__(self, word):
+        """
+        """
         self.score = 0
         self.word = word.lower()
         self.letter_dict = {
