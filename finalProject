@@ -36,7 +36,8 @@ class Player:
 class GameState:
     def __init__(self, theme=None):
         self.theme = theme
-        self.possible_themes = ['sports', 'fruit', 'animals', 'countries']   
+        self.possible_themes = ['sports', 'fruit', 'animals', 'countries']  
+        self.scrambled_word = "" 
         
     #Ben: magic method; prints possible themes  
     def __str__(self):
@@ -96,37 +97,59 @@ class GameState:
         shuffled_word = list(random_word)
         random.shuffle(shuffled_word)
 
-        print(shuffled_word)
-        return ''.join(shuffled_word)
+        #print(shuffled_word)
+        self.scrambled_word = shuffled_word
+        #return ''.join(shuffled_word)
 
     
     def gameboard(self):
-        print(f'''------------------------------------------------
-                             Welcome to Jeopogram
-                Your jumble is {self.random_word}
-
-                ---------------------------------------------------
-             
-              ''')
-        guess = input("Enter your guess:")
-        max_line_length = max(len(jumble), len(guess)) + 34  # 34 is the length of the static part of the message
-        dashed_line = '-' * max_line_length
-
-        print(f'''
- {dashed_line}
-                            Jeopogram
-                 Your jumble is {self.random_word}
-                 Your guess {guess} was correct/incorrect
-                
- {dashed_line}
-             
-             ''')
+        max_length = max(52, len(self.scrambled_word) + 27)
+        dashed_line = "-" * max_length
+    
+        padding = (max_length - 26 - len(self.scrambled_word)) // 2
+    
+        print(f'''{dashed_line}
+    {' ' * padding}Welcome to Jeopogram
+{' ' * padding}Your jumble is {self.scrambled_word}
+{dashed_line}
+    ''')
         
     
 #gabrielle's code
 
 class Outcome:
-    def __init__(self, word):
+    """
+    This class works to determine the outcome of the game
+
+
+    Attributes:
+        score (int): The current score of each round
+        word (str): the word being evaluated for each round
+        letter_dict (dict): a dictionary to map the letters of word to evaluate it to a corresponding score
+
+    Methods:
+        __init__ (self, word):
+            handles an outcome instance when given a word.
+
+        __str__(self):
+            just prints the potential score prior to guess.
+
+        calculatePotentialScore(self):
+            calculates and returns the score for the mapped word.
+
+        wordVerification(self, word):
+            uses regular expressions to check if the word only uses letter characters and updates score. 
+
+        results(self, guesses, answered, name = "User"):
+            prints the outcome of the game. 
+
+        gameplay(self, word, guesses, name="User):
+            this handles the users guesses and answers.
+
+        get_total(self):
+            Returns the total score once the player "quits".
+    """
+    def __init__(self, word): 
         self.score = 0
         self.word = word.lower()
         self.letter_dict = {
@@ -181,10 +204,11 @@ class Outcome:
             return False
 
     def results(self, guesses, answered, name="User"):
-        scoreset = set()
+        self.scoreset = set()
 
         if answered == 1:
-            scoreset.add(guesses, self.score)
+            self.scoreset.add((self.score, guesses))
+            print(f"Score, Attempts Remaining: {self.scoreset}")
             print("Congrats! " + str(name) + " got it correct!")
             print(str(name) + " recieved a score of " + str(self.score) + " with " + str(guesses) + " guesses remaining.")
         else:
@@ -258,14 +282,15 @@ if __name__ == "__main__":
    while play:
         
         random_word = game_state.select_random_word()
-        scrambled_word = game_state.scramble(random_word)
+        #scrambled_word = game_state.scramble(random_word)
+        game_state.scramble(random_word)
+        game_state.gameboard()
         running = Outcome(random_word)
         #shuffled_word = game_state.scramble(random_word)
         #game_state.gameboard(shuffled_word)
         #add player.scramble or whatever scramble function is called in player
         running.gameplay(random_word, player1.incorrect_guesses, name)
         totalScore += running.get_total()
-        print(Outcome.results)
         
         play = game_state.play_again()
         print("the amount of points you have scored so far is " + str(totalScore))
