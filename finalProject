@@ -224,6 +224,33 @@ def parse_args(arglist):
    """
    parser = ArgumentParser()
    return parser.parse_args(arglist)
+class board:
+    def gameboard(self):
+        jumble = "smklappsdle"
+        print(f'''------------------------------------------------
+                             Welcome to Jeopogram
+                Your jumble is {jumble}
+
+                ---------------------------------------------------
+             
+             ''')
+
+        guess = input("Enter your guess:")
+        max_line_length = max(len(jumble), len(guess)) + 34  # 34 is the length of the static part of the message
+        dashed_line = '-' * max_line_length
+
+        print(f'''
+{dashed_line}
+                        Jeopogram
+                Your jumble is {jumble}
+                Your guess {guess} was correct/incorrect
+                
+{dashed_line}
+             
+             ''')
+
+board_instance = board()
+board_instance.gameboard()
 
 
 if __name__ == "__main__":
