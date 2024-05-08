@@ -36,7 +36,8 @@ class Player:
 class GameState:
     def __init__(self, theme=None):
         self.theme = theme
-        self.possible_themes = ['sports', 'fruit', 'animals', 'countries']   
+        self.possible_themes = ['sports', 'fruit', 'animals', 'countries']  
+        self.scrambled_word = "" 
         
     #Ben: magic method; prints possible themes  
     def __str__(self):
@@ -96,31 +97,22 @@ class GameState:
         shuffled_word = list(random_word)
         random.shuffle(shuffled_word)
 
-        print(shuffled_word)
-        return ''.join(shuffled_word)
+        #print(shuffled_word)
+        self.scrambled_word = shuffled_word
+        #return ''.join(shuffled_word)
 
     
     def gameboard(self):
-        print(f'''------------------------------------------------
-                             Welcome to Jeopogram
-                Your jumble is {self.random_word}
-
-                ---------------------------------------------------
-             
-              ''')
-        guess = input("Enter your guess:")
-        max_line_length = max(len(jumble), len(guess)) + 34  # 34 is the length of the static part of the message
-        dashed_line = '-' * max_line_length
-
-        print(f'''
- {dashed_line}
-                            Jeopogram
-                 Your jumble is {self.random_word}
-                 Your guess {guess} was correct/incorrect
-                
- {dashed_line}
-             
-             ''')
+        max_length = max(52, len(self.scrambled_word) + 27)
+        dashed_line = "-" * max_length
+    
+        padding = (max_length - 26 - len(self.scrambled_word)) // 2
+    
+        print(f'''{dashed_line}
+    {' ' * padding}Welcome to Jeopogram
+{' ' * padding}Your jumble is {self.scrambled_word}
+{dashed_line}
+    ''')
         
     
 #gabrielle's code
@@ -235,10 +227,11 @@ class Outcome:
             return False
 
     def results(self, guesses, answered, name="User"):
-        self.correctly_answered_users = set()
+        self.scoreset = set()
 
         if answered == 1:
-            self.correctly_answered_users.add(name)
+            self.scoreset.add((self.score, guesses))
+            print(f"Score, Attempts Remaining: {self.scoreset}")
             print("Congrats! " + str(name) + " got it correct!")
             print(str(name) + " recieved a score of " + str(self.score) + " with " + str(guesses) + " guesses remaining.")
         else:
@@ -331,7 +324,9 @@ if __name__ == "__main__":
    while play:
         
         random_word = game_state.select_random_word()
-        scrambled_word = game_state.scramble(random_word)
+        #scrambled_word = game_state.scramble(random_word)
+        game_state.scramble(random_word)
+        game_state.gameboard()
         running = Outcome(random_word)
         #shuffled_word = game_state.scramble(random_word)
         #game_state.gameboard(shuffled_word)
