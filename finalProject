@@ -147,8 +147,10 @@ class Outcome:
             return False
 
     def results(self, guesses, answered, name="User"):
+        self.correctly_answered_users = set()
 
         if answered == 1:
+            self.correctly_answered_users.add(name)
             print("Congrats! " + str(name) + " got it correct!")
             print(str(name) + " recieved a score of " + str(self.score) + " with " + str(guesses) + " guesses remaining.")
         else:
