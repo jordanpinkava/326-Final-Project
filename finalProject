@@ -55,6 +55,9 @@ class GameState:
     def __str__(self):
         '''Str magic method to return f-string of possible themes for player
            to select from
+           
+           Returns:
+            Returns a list of teh possible themes. 
         '''
         return f"Possible Themes: {', '.join(self.possible_themes)}"
     
