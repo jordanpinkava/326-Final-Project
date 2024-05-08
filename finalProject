@@ -103,6 +103,10 @@ class GameState:
 
     
     def gameboard(self):
+        """Displays our beautiful gameboard
+        
+        Side effects: Prints interface to sdout
+        """
         max_length = max(52, len(self.scrambled_word) + 27)
         dashed_line = "-" * max_length
     
@@ -227,6 +231,18 @@ class Outcome:
             return False
 
     def results(self, guesses, answered, name="User"):
+        """processes the results of a user's guesses.
+
+
+        Args:
+            guesses (int): the number of guesses
+            answered (int):  indicates whether the user has correctly answered 
+            the word or not
+            name (str, optional): name of user
+            
+        Side Effects:
+        Prints to sdout
+        """
         self.scoreset = set()
 
         if answered == 1:
