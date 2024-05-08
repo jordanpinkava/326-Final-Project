@@ -67,12 +67,12 @@ class GameState:
     
     #Ben is still working this out 
     def get_theme(self):
+        theme = input("Choose your theme: ")
         #raise value error if user doesn't input 'fruit' or 'animals'
-        if theme_choice not in ["fruit", "animals", "sports", "countries"]:
+        if theme not in ["fruit", "animals", "sports", "countries"]:
             raise ValueError("Invalid theme.")
         #sets theme to input
-        theme_choice = input("Choose your theme:")
-        self.theme = theme_choice
+        self.theme = theme
         return self.theme
         
     
@@ -298,7 +298,8 @@ if __name__ == "__main__":
    name = input("Please enter your name: ")
    player1 = Player(name)
    print(GameState())
-   theme = input("Please choose a theme: ")
+   game_state = GameState()
+   theme = game_state.get_theme()
    game_state = GameState(theme)
    play = True
    totalScore = 0
