@@ -275,8 +275,8 @@ if __name__ == "__main__":
         random_word = game_state.select_random_word()
         scrambled_word = game_state.scramble(random_word)
         running = Outcome(random_word)
-        shuffled_word = game_state.scramble(random_word)
-        game_state.gameboard(shuffled_word)
+        #shuffled_word = game_state.scramble(random_word)
+        #game_state.gameboard(shuffled_word)
         #add player.scramble or whatever scramble function is called in player
         running.gameplay(random_word, player1.incorrect_guesses, name)
         totalScore += running.get_total()
