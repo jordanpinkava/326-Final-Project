@@ -17,6 +17,7 @@ class Player:
     """
     def __init__(self, player_name):
         """set attributes of the game
+        Jordan
 
         Args:
             player_name (str): name of the player
@@ -57,6 +58,7 @@ class GameState:
     #jordan function to play again
     def play_again(self):
         """asks player if they'd like to play our game again
+        Jordan, conditional expression
 
         Returns:
             Bool: True if Y (yes), False is N. If True, the game will restart.
@@ -69,9 +71,9 @@ class GameState:
         return True if play_again.upper() == "Y" else False
         
 
-#luis' code
     def select_random_word(self):
-        """Selects a random word from a file based on the current theme.
+        """Selects a random word from a file based on the current theme. 
+        Luis', with and f-string techniques.
 
     Returns:
         str: A randomly selected word from the theme's word list.
@@ -98,6 +100,7 @@ class GameState:
 
     def letters(self):
         """Generates a list of three random letters.
+        Luis
 
     Returns:
         list: A list containing three randomly selected letters from the English alphabet.
@@ -109,29 +112,31 @@ class GameState:
 
         
     def scramble(self, random_word):
-        """Scrambles a given word by appending three random letters to it and shuffling the result.
+        """Scrambles a given word by appending three random letters to it and 
+        shuffling the result.
+        Luis
 
     Args:
         random_word (str): The word to be scrambled.
 
     Returns:
-        None. The scrambled word is stored in the `scrambled_word` attribute of the object.
+        None. The scrambled word is stored in the `scrambled_word` attribute of
+        the object.
 
     Side Effects:
-        - Modifies the `scrambled_word` attribute of the object to contain the scrambled word.
+        - Modifies the `scrambled_word` attribute of the object to contain the 
+        scrambled word.
     """
         random_letters = self.letters()
         random_word += ''.join(random_letters)
         shuffled_word = list(random_word)
         random.shuffle(shuffled_word)
-
-        #print(shuffled_word)
         self.scrambled_word = shuffled_word
-        #return ''.join(shuffled_word)
 
     
     def gameboard(self):
         """Displays our beautiful gameboard
+        Michael, max()
         
         Side effects: Prints interface to sdout
         """
@@ -146,8 +151,6 @@ class GameState:
 {dashed_line}
     ''')
         
-    
-#gabrielle's code
 
 class Outcome:
     """
@@ -184,6 +187,7 @@ class Outcome:
     def __init__(self, word): 
         """
         Handles an Outcome when given the random word from text file
+        Gabrielle
 
         Args: 
             word (str): The word given
@@ -222,6 +226,7 @@ class Outcome:
     def __str__(self):
         """
         Prints potential score for the word. is also a magic method 
+        Gabrielle
         """
         self.calculatePotentialScore()
         print("The potential score for your word is: " + str(self.score) + " points.")
@@ -229,6 +234,7 @@ class Outcome:
     def calculatePotentialScore(self):
         """
         Calculates the potential score (based on the word) and returns it 
+        Gabrielle
 
         Returns:
             int: potential score for word
@@ -238,7 +244,9 @@ class Outcome:
         return self.score
 
     def wordVerification(self, word):
-        """Verifies if the word is only using characters, not digits nor non-whitespace-characters
+        """Verifies if the word is only using characters, not digits nor 
+        non-whitespace-characters
+        Gabrielle, regex
 
         Args:
             word (str): the word being checked
@@ -260,6 +268,7 @@ class Outcome:
 
     def results(self, guesses, answered, name="User"):
         """processes the results of a user's guesses.
+        Michael, set operations
 
 
         Args:
@@ -286,8 +295,10 @@ class Outcome:
 
     def gameplay(self, word, guesses, name = "User"):
         """
-        This handles how the user interacts with the program (gameplay). the program processes the user 
-        inputs and updates guesses when player gets the answer correct or wrong.
+        This handles how the user interacts with the program (gameplay). the 
+        program processes the user inputs and updates guesses when player gets 
+        the answer correct or wrong.
+        Gabrielle, optional parameters
 
 
         Args:
@@ -334,15 +345,17 @@ class Outcome:
     def get_total(self):
         """
         Handles getting the total score
+        Gabrielle
 
         Returns:
             int: the total score.
         """
         return self.score
 
-#Jordan -- arg parse and if main
+
 def parse_args(arglist):
    """parses the arguments and code given in our main() function
+   Jordan, argumentparser class
 
    Args:
        arglist (str): list of arguments to parse
@@ -356,7 +369,6 @@ def parse_args(arglist):
 
 if __name__ == "__main__":
    args = parse_args(sys.argv[1:])
-   #word = game_state.select_random_word()
    name = input("Please enter your name: ")
    player1 = Player(name)
    print(GameState())
@@ -368,13 +380,9 @@ if __name__ == "__main__":
    while play:
         
         random_word = game_state.select_random_word()
-        #scrambled_word = game_state.scramble(random_word)
         game_state.scramble(random_word)
         game_state.gameboard()
         running = Outcome(random_word)
-        #shuffled_word = game_state.scramble(random_word)
-        #game_state.gameboard(shuffled_word)
-        #add player.scramble or whatever scramble function is called in player
         running.gameplay(random_word, player1.incorrect_guesses, name)
         totalScore += running.get_total()
         
