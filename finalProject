@@ -278,6 +278,20 @@ def parse_args(arglist):
 # board_instance.gameboard()
 
 
+#Jordan -- arg parse and if main
+def parse_args(arglist):
+   """parses the arguments and code given in our main() function
+
+   Args:
+       arglist (str): list of arguments to parse
+
+   Returns:
+       str: parsed arguments from those given
+   """
+   parser = ArgumentParser()
+   return parser.parse_args(arglist)
+
+
 if __name__ == "__main__":
    args = parse_args(sys.argv[1:])
    #word = game_state.select_random_word()
