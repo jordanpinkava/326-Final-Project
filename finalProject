@@ -35,17 +35,47 @@ class Player:
 
 #Ben's code
 class GameState:
+    '''GameState class for game
+    
+    Attributes:
+        theme (str): name of theme to pull words from
+        possible_themes (list): list of possible themes
+        scrambled_word (str): empty string of the scrambled word
+        word_list (list): list of previously used random_words
+        theme_list (list): list of previously selected theme    
+    '''
     def __init__(self, theme=None):
+        '''Initializes theme, possible_themes, and scrambled_word attributes
+        Ben
+        
+        Args:
+            theme (str): name of theme; defaults to None
+        '''
         self.theme = theme
         self.possible_themes = ['sports', 'fruit', 'animals', 'countries']  
         self.scrambled_word = "" 
-        
-    #Ben: magic method; prints possible themes  
+         
     def __str__(self):
+        '''Str magic method to return f-string of possible themes for player to
+           select from
+        Ben, magic methods
+        '''
         return f"Possible Themes: {', '.join(self.possible_themes)}"
     
      
     def get_theme(self):
+        '''Prompts player to select theme
+        Ben
+        
+        Returns:
+            self.theme (str): name of theme player selects
+            
+        Raises:
+            ValueError: if user input is not in possible_themes list
+            
+        Side effects:
+            Changes theme attribute from None to player's input
+        '''
         theme = input("Choose your theme: ")
         #raise value error if user doesn't input 'fruit' or 'animals'
         if theme not in self.possible_themes:
@@ -94,6 +124,13 @@ class GameState:
         return random_word
     
     def get_past_dict(self):
+        '''Produces dictionary of past theme and their answer with theme as key
+           and word as value
+        Ben, dictionary comprehension
+        
+        Side effects:
+            Prints f-string of previous theme and answer to terminal
+        '''
         dict = {theme: word for theme, word in zip(self.theme_list, self.word_list)}
         for theme, word in dict.items():
             print(f"Your previous theme was: {theme}. The answer was: {word}.")
