@@ -16,6 +16,15 @@ class Player:
         word_guessed (bool): whether or not the word has been guessed correctly
     """
     def __init__(self, player_name):
+        """set attributes of the game
+
+        Args:
+            player_name (str): name of the player
+            
+        Side effects:
+            guesses_made: list can be updated as game is played
+            word_guessed: cna become true if word is guessed
+        """
         self.name = player_name
         self.guesses_made = []
         self.incorrect_guesses = 3
