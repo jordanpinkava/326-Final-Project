@@ -55,6 +55,12 @@ class GameState:
     
     #jordan function to play again
     def play_again(self):
+        """asks player if they'd like to play our game again
+
+        Returns:
+            Bool: True if Y (yes), False is N. If True, the game will restart.
+                If False, the program will stop running.
+        """
         play_again = input("Do you want to play the game again? Y/N: ")
         return True if play_again.upper() == "Y" else False
         
