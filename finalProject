@@ -158,6 +158,12 @@ class Outcome:
             Returns the total score once the player "quits".
     """
     def __init__(self, word): 
+        """
+        Handles an Outcome when given the random word from text file
+
+        Args: 
+            word (str): The word given
+        """
         self.score = 0
         self.word = word.lower()
         self.letter_dict = {
@@ -190,15 +196,32 @@ class Outcome:
     }
 
     def __str__(self):
+        """
+        Prints potential score for the word. is also a magic method 
+        """
         self.calculatePotentialScore()
         print("The potential score for your word is: " + str(self.score) + " points.")
  
     def calculatePotentialScore(self):
+        """
+        Calculates the potential score (based on the word) and returns it 
+
+        Returns:
+            int: potential score for word
+        """
         for i in self.word:
             self.score += self.letter_dict[i]
         return self.score
 
     def wordVerification(self, word):
+        """Verifies if the word is only using characters, not digits nor non-whitespace-characters
+
+        Args:
+            word (str): the word being checked
+
+        Returns: 
+            bool: True when verified, False if not only characters
+        """
         pattern = r"^[a-zA-Z]+$"
         if re.search(pattern, word):
             if len(word) < 4:
@@ -225,6 +248,19 @@ class Outcome:
                 
 
     def gameplay(self, word, guesses, name = "User"):
+        """
+        This handles how the user interacts with the program (gameplay). the program processes the user 
+        inputs and updates guesses when player gets the answer correct or wrong.
+
+
+        Args:
+            word (str): the word being guessed
+            guesses (int): the number of guesses (only 3) 
+            name (str): the name of the player taken as an option param "User".
+
+        Returns:
+            int: The number of guesses
+        """
         self.__str__()
 
         user_inp = input("What is your guess? \n")
@@ -259,6 +295,12 @@ class Outcome:
         return guesses
     
     def get_total(self):
+        """
+        Handles getting the total score
+
+        Returns:
+            int: the total score.
+        """
         return self.score
 
 #Jordan -- arg parse and if main
