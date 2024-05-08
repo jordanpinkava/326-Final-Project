@@ -11,65 +11,24 @@ class Player:
         self.incorrect_guesses = 3
         self.points = 0
         self.word_guessed = False
-        
-    #michael's code, im still working on these, my bad if they overlap w/ ur code
-    def guess(word, jumble):
-        #i think you might only need word param
-
-    # convert both words to lowercase to ignore case sensitivity
-        word = word.lower()
-        jumble = jumble.lower()
-    
-    #create dictionaries to count the occurrences of each letter in both words
-        word_count = {}
-        jumble_count = {}
-    
-    #ount the occurrences of each letter in the word
-        for letter in word:
-            word_count[letter] = word_count.get(letter, 0) + 1
-    
-    #count the occurrences of each letter in the jumble
-        for letter in jumble:
-            jumble_count[letter] = jumble_count.get(letter, 0) + 1
-    
-    #check if the jumble contains all the letters required to form the word
-        for letter, count in word_count.items():
-            if letter not in jumble_count or jumble_count[letter] < count:
-                return False
-
-
-    #get the player's guess
-        player_guess = input("Enter your guess: ")
-
-# Doing this already in outcome.gameplay. Can this function just return 
-# a scrambled word?
-#check if the player's guess is correct
-        attempts_left =3 
-        if guess(word, player_guess):
-            print("Yes, your guess is correct!")
-        else:
-            print("No, your guess is incorrect.")
-            attempts_left -=1
-        if attempts_left == 0:    
-            return "No attempts left. Try again later."
 
 
 #Ben's code
 class GameState:
     def __init__(self, theme=None):
         self.theme = theme
-        self.possible_themes = ['sports', 'fruit', 'animals', 'countries']   
+        self.possible_themes = ['sports', 'fruit', 'animals', 'countries']
+        self.past_words = {}   
         
     #Ben: magic method; prints possible themes  
     def __str__(self):
         return f"Possible Themes: {', '.join(self.possible_themes)}"
     
-    
-    #Ben is still working this out 
+     
     def get_theme(self):
         theme = input("Choose your theme: ")
         #raise value error if user doesn't input 'fruit' or 'animals'
-        if theme not in ["fruit", "animals", "sports", "countries"]:
+        if theme not in self.possible_themes:
             raise ValueError("Invalid theme.")
         #sets theme to input
         self.theme = theme
@@ -106,6 +65,14 @@ class GameState:
 
         print(shuffled_word)
         return ''.join(shuffled_word)
+    
+    def add_past_words(self, word):
+        self.word = random_word
+    
+    #def show_past_words(self):
+        #print(f"Here are your past answers and their points:")
+       # self.past_words = 
+        #{word: Outcome.points for word in self.random_word}
     
     def gameboard(self):
         print(f'''------------------------------------------------
@@ -315,7 +282,8 @@ if __name__ == "__main__":
         play = game_state.play_again()
         print("the amount of points you have scored so far is " + str(totalScore))
         if play == True:
-            theme = input("Please choose a theme: ")
+            game_state = GameState()
+            theme = game_state.get_theme()
             game_state = GameState(theme)
    else:
        sys.exit() 
