@@ -7,7 +7,10 @@ import re
 class Player:
     def __init__(self, player_name):
         self.name = player_name
-
+        self.guesses_made = []
+        self.incorrect_guesses = 3
+        self.points = 0
+        self.word_guessed = False
 
 
 #Ben's code
@@ -272,6 +275,8 @@ if __name__ == "__main__":
         random_word = game_state.select_random_word()
         scrambled_word = game_state.scramble(random_word)
         running = Outcome(random_word)
+        shuffled_word = game_state.scramble(random_word)
+        game_state.gameboard(shuffled_word)
         #add player.scramble or whatever scramble function is called in player
         running.gameplay(random_word, player1.incorrect_guesses, name)
         totalScore += running.get_total()
