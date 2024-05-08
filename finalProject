@@ -1,10 +1,20 @@
-#jordan's code
+"""An anagram game called 'Jepogram' which allows users to choose a 
+theme to guess a word from a scramble of letters"""
 import random
 from argparse import ArgumentParser
 import sys
 import re
 
 class Player:
+    """Base player class for the anagram game.
+    
+    Attributes:
+        name (str): the name of the player playing the game.
+        guesses_made (list): the guesses made in the game
+        incorrect_guesses (int): number of incorrect guesses available
+        points (int): number of points the group has
+        word_guessed (bool): whether or not the word has been guessed correctly
+    """
     def __init__(self, player_name):
         self.name = player_name
         self.guesses_made = []
