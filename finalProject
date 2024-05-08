@@ -17,8 +17,7 @@ class Player:
 class GameState:
     def __init__(self, theme=None):
         self.theme = theme
-        self.possible_themes = ['sports', 'fruit', 'animals', 'countries']
-        self.past_words = {}   
+        self.possible_themes = ['sports', 'fruit', 'animals', 'countries']   
         
     #Ben: magic method; prints possible themes  
     def __str__(self):
@@ -65,14 +64,7 @@ class GameState:
 
         print(shuffled_word)
         return ''.join(shuffled_word)
-    
-    def add_past_words(self, word):
-        self.word = random_word
-    
-    #def show_past_words(self):
-        #print(f"Here are your past answers and their points:")
-       # self.past_words = 
-        #{word: Outcome.points for word in self.random_word}
+
     
     def gameboard(self):
         print(f'''------------------------------------------------
