@@ -60,6 +60,9 @@ class GameState:
         Returns:
             Bool: True if Y (yes), False is N. If True, the game will restart.
                 If False, the program will stop running.
+                
+        Side effects:
+            Will either stop the program or restart it.
         """
         play_again = input("Do you want to play the game again? Y/N: ")
         return True if play_again.upper() == "Y" else False
