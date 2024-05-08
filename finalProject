@@ -58,18 +58,18 @@ class Player:
 class GameState:
     def __init__(self, theme=None):
         self.theme = theme
-        self.possible_themes = ['sports', 'fruit', 'animals', 'countries']   
+        self.possible_themes = ['sports', 'fruit', 'animals', 'countries']
+        self.past_words = {}   
         
     #Ben: magic method; prints possible themes  
     def __str__(self):
         return f"Possible Themes: {', '.join(self.possible_themes)}"
     
-    
-    #Ben is still working this out 
+     
     def get_theme(self):
         theme = input("Choose your theme: ")
         #raise value error if user doesn't input 'fruit' or 'animals'
-        if theme not in ["fruit", "animals", "sports", "countries"]:
+        if theme not in self.possible_themes:
             raise ValueError("Invalid theme.")
         #sets theme to input
         self.theme = theme
@@ -106,6 +106,14 @@ class GameState:
 
         print(shuffled_word)
         return ''.join(shuffled_word)
+    
+    def add_past_words(self, word):
+        self.word = random_word
+    
+    #def show_past_words(self):
+        #print(f"Here are your past answers and their points:")
+       # self.past_words = 
+        #{word: Outcome.points for word in self.random_word}
     
     def gameboard(self):
         print(f'''------------------------------------------------
@@ -315,7 +323,8 @@ if __name__ == "__main__":
         play = game_state.play_again()
         print("the amount of points you have scored so far is " + str(totalScore))
         if play == True:
-            theme = input("Please choose a theme: ")
+            game_state = GameState()
+            theme = game_state.get_theme()
             game_state = GameState(theme)
    else:
        sys.exit() 
