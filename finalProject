@@ -110,7 +110,7 @@ class GameState:
     
         print(f'''{dashed_line}
     {' ' * padding}Welcome to Jeopogram
-{' ' * padding}Your jumble is {self.scrambled_word}
+{' ' * padding}Your scramble is {self.scrambled_word}
 {dashed_line}
     ''')
         
