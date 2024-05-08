@@ -33,7 +33,6 @@ class Player:
         self.word_guessed = False
 
 
-#Ben's code
 class GameState:
     '''GameState class for game
     
