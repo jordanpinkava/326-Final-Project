@@ -155,6 +155,7 @@ class Outcome:
             return False
 
     def results(self, guesses, answered, name="User"):
+        self.correctly_answered_users = set()
 
         if answered == 1:
             print("Congrats! " + str(name) + " got it correct!")
