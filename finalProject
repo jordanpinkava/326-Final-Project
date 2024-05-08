@@ -46,11 +46,14 @@ class GameState:
         with open(file_path, 'r') as file:
             words = [line.strip() for line in file]
         random_word = random.choice(words)
-        self.theme_word_dict = {self.theme: random_word}
+        self.word_list = [random_word]
+        self.theme_list = [self.theme]
         return random_word
     
     def get_past_dict(self):
-        print(self.theme_word_dict)
+        dict = {theme: word for theme, word in zip(self.theme_list, self.word_list)}
+        for theme, word in dict.items():
+            print(f"Your previous theme was: {theme}. The answer was: {word}.")
 
     def letters(self):
         letters1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 
