@@ -100,8 +100,8 @@ class GameState:
         
     def scramble(self, random_word):
         random_letters = self.letters()
-        combined_word = random_word + ''.join(random_letters)
-        shuffled_word = list(combined_word)
+        random_word += ''.join(random_letters)
+        shuffled_word = list(random_word)
         random.shuffle(shuffled_word)
 
         print(shuffled_word)
