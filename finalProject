@@ -95,6 +95,8 @@ class GameState:
  {dashed_line}
              
              ''')
+        shuffled_word = self.scramble(random_word)
+        self.gameboard(shuffled_word)
         
     
 #gabrielle's code
@@ -158,6 +160,7 @@ class Outcome:
         self.correctly_answered_users = set()
 
         if answered == 1:
+            self.correctly_answered_users.add(name)
             print("Congrats! " + str(name) + " got it correct!")
             print(str(name) + " recieved a score of " + str(self.score) + " with " + str(guesses) + " guesses remaining.")
         else:
