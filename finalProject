@@ -71,6 +71,18 @@ class GameState:
 
 #luis' code
     def select_random_word(self):
+        """Selects a random word from a file based on the current theme.
+
+    Returns:
+        str: A randomly selected word from the theme's word list.
+
+    Raises:
+        FileNotFoundError: If the file for the current theme's words does not exist.
+
+    Side Effects:
+        - Modifies the `word_list` attribute of the object to contain the selected word.
+        - Modifies the `theme_list` attribute of the object to contain the current theme.
+    """
         file_path = f'{self.theme}_words.txt'
         with open(file_path, 'r') as file:
             words = [line.strip() for line in file]
@@ -85,6 +97,11 @@ class GameState:
             print(f"Your previous theme was: {theme}. The answer was: {word}.")
 
     def letters(self):
+        """Generates a list of three random letters.
+
+    Returns:
+        list: A list containing three randomly selected letters from the English alphabet.
+    """
         letters1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 
         'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
         random_letters = random.sample(letters1, 3) 
@@ -92,6 +109,17 @@ class GameState:
 
         
     def scramble(self, random_word):
+        """Scrambles a given word by appending three random letters to it and shuffling the result.
+
+    Args:
+        random_word (str): The word to be scrambled.
+
+    Returns:
+        None. The scrambled word is stored in the `scrambled_word` attribute of the object.
+
+    Side Effects:
+        - Modifies the `scrambled_word` attribute of the object to contain the scrambled word.
+    """
         random_letters = self.letters()
         random_word += ''.join(random_letters)
         shuffled_word = list(random_word)
