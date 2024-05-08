@@ -7,10 +7,7 @@ import re
 class Player:
     def __init__(self, player_name):
         self.name = player_name
-        self.guesses_made = []
-        self.incorrect_guesses = 3
-        self.points = 0
-        self.word_guessed = False
+
 
 
 #Ben's code
